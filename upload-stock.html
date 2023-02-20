@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>JTC</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!--	font-family-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- toaster link -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <!-- loader link -->
+  <link rel=”stylesheet” href=”https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css”
+    integrity=”sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh” crossorigin=”anonymous”>
+  <!-- icon link -->
+  <script src="https://use.fontawesome.com/f55efbb261.js"></script>
+  <!-- https://fontawesome.com/v4/icon/times -->
+
+</head>
+
+<body id="main-body" onload="initUploadStock()">
+  <section class="main_section">
+    <div class="nav-jtc-width">
+      <div id="myNav" class="nav-jtc">
+        <button class="closebtn" onclick="closeNav()">Close</button>
+        <div class="overlay-content">
+          <ul class="nav-list">
+            <li>
+              <p class="nav-user-email" id="user-email"></p>
+            </li>
+            <li id="upload-stock-button">
+              <a href="upload-stock.html">Upload Stock</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="openNav-btn"><span onclick="openNav()">&#9776;</span> <img src="images/jtc-logo.png" alt="JTC logo"
+          width="150px" />
+      </div>
+
+
+      <!-- loader -->
+      <div class="main-section-spinner" id="main-loader">
+        <div class="spinner-border loader" role="status">
+          <span class="sr-only"></span>
+        </div>
+      </div>
+
+      <!-- Navbar End -->
+      <div class="images-box">
+        <div class="select-box">
+          <form id="myform">
+            <!-- row 1 -->
+            <div class="row labelRow">
+              <div class="col-6 col-lg-6">
+                <label>Maker</label>
+                <select onchange="getModel()" id="Maker">
+                  <option selected="true" disabled value="">Select Maker</option>
+                </select>
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Model</label>
+                <select onchange="getGrade()" id="Model">
+                  <option selected="true" disabled value="">Select Model</option>
+                </select>
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Grade</label>
+                <select id="Grade">
+                  <option selected="true" disabled value="">Select Grade</option>
+                </select>
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Type</label>
+                <select id="Type">
+                  <option selected="true" disabled value="">Select Type</option>
+                </select>
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Chassis Type</label>
+                <input type="text" autocomplete="off" id="ChassisType" />
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Chassis Number</label>
+                <input type="text" autocomplete="off" id="ChassisNumber" />
+              </div>
+              <div class="col-6 col-lg-6 date">
+                <label>Manufacture Date</label>
+                <input type="date" id="Manufacture" />
+              </div>
+              <div class="col-6 col-lg-6 date">
+                <label>Registration Date</label>
+                <input type="date" id="Registration" />
+              </div>
+            </div>
+
+            <!-- row 2 -->
+            <div class="row labelRow">
+              <div class="col-6 col-lg-6">
+                <label>Drive</label>
+                <select id="Drive">
+                  <option selected="true" disabled value="">Select Drive</option>
+                  <option value="2D">2D</option>
+                  <option value="4D">4D</option>
+                </select>
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Fuel </label>
+                <select id="Fuel">
+                  <option selected="true" disabled value="">Select Fuel</option>
+                  <option value="Electric">Electric</option>
+                  <option value="Gasoline">Gasoline</option>
+                  <option value="Hybrid Gasoline">Hybrid Gasoline</option>
+                  <option value="Diesel">Diesel</option>
+                </select>
+                <!-- <input type="text" autocomplete="off" id="Fuel" /> -->
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Milage Per KM</label>
+                <input type="number" autocomplete="off" id="Milage" />
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Engine Type</label>
+                <input type="text" autocomplete="off" id="EngineType" />
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Engine Number</label>
+                <input type="text" autocomplete="off" id="EngineNumber" />
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Engine In CC</label>
+                <input type="number" autocomplete="off" id="EngineCc" />
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>No Of Seats</label>
+                <input type="number" autocomplete="off" id="NoOfSeats" />
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>No Of Doors</label>
+                <input type="number" autocomplete="off" id="NoOfDoors" />
+              </div>
+            </div>
+
+            <!-- row 3 -->
+            <div class="row labelRow">
+              <div class="col-6 col-lg-6">
+                <label>Auction Grade</label>
+                <input type="text" autocomplete="off" id="Auction" />
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Color</label>
+                <select id="Color">
+                  <option selected="true" disabled value="">Select Color</option>
+                </select>
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>For Country</label>
+                <select id="ForCountryId">
+                  <option selected="true" disabled value="">Select Country</option>
+                </select>
+              </div>
+              <!-- <div class="col-6 col-lg-6">
+              <label>Buying Country</label>
+              <select id="BuyingCountryId">
+                <option selected="true" disabled value="">Select Country</option>
+              </select>
+            </div> -->
+              <div class="col-6 col-lg-6">
+                <label>Currency</label>
+                <select id="Currency">
+                  <option selected="true" disabled value="">Select Currency</option>
+                </select>
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Buying Price</label>
+                <input type="number" autocomplete="off" id="BuyingPrice" />
+              </div>
+              <div class="col-6 col-lg-6">
+                <label>Offer Price</label>
+                <input type="number" autocomplete="off" id="OfferPrice" />
+              </div>
+              <!-- you can add two more feilds in this row here -->
+            </div>
+
+            <!-- row 4 -->
+            <div class="row labelRow">
+              <div class="col-12 col-lg-12 description">
+                <label>Description</label><br>
+                <textarea type="text" autocomplete="off" id="Description" rows="2" cols="24"></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+        <!-- img-box-list-->
+        <div class="detail-overview">
+          <h1>OVERVIEW and SPECIFICATION</h1>
+          <div class="specifications">
+            <form id="myform">
+              <div class="checkBox" id="selectCheck">
+                <!-- append specifications here -->
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- detail-overview -->
+        <div class="upload-box">
+          <form id="fileform" name="input-images">
+            <input id="upload-btn" type="file" accept="image/*" multiple class="inp-upload" name="veh-images" />
+            <label for="upload-btn" class="upload-img">
+              <img src="images/cloud-computing.png" class="uploadd" alt="Upload" />&nbsp; Upload Image
+            </label>
+          </form>
+
+          <div class="row mt-3 image-preview">
+            <!-- <div class="col-4 col-sm-4"> -->
+            <div class="w-100">
+              <div id="preview" class="image-preview-box">
+                <!-- create and append image -->
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <a onclick="uploadStock()" class="upload-stock-btn upload-btn-2" id="myBtn">Upload Stock</a>
+          </div>
+        </div>
+        <!-- upload	-->
+      </div>
+      
+      <!-- footer start-->
+      <div class="jtc-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col border-right">
+                    <a id="footerHome" href="home.html">
+                        <img src="images/home.png" alt="icon" class="icon-size" /><span
+                            class="footer-text">Home</span></a>
+                </div>
+                <div class="col border-right">
+                    <a onclick="reloadUploadStock()">
+                        <img src="images/reload.png" alt="icon" class="icon-size" /><span
+                            class="footer-text">Reload</span>
+                    </a>
+                </div>
+                <div class="col border-right">
+                    <a href="tel:+81 45 508 4701">
+                        <img src="images/call.png" alt="icon" class="icon-size" /><span
+                            class="footer-text">Call</span></a>
+                </div>
+                <div class="col ftr border-right">
+                    <a target="_blank"
+                        href="https://wa.me/819053416023?text=Hi+there%21+%0D%0AI+would+like+to+more+about+the+car+deals.%0D%0A-+from+JTCFlash+Deals+App&type=phone_number&app_absent=0">
+                        <img src="images/whatsapp.png" alt="icon" class="icon-size" /><span
+                            class="footer-text">WhatsApp
+                        </span></a>
+                </div>
+                <div class="col ftr ">
+                    <a href="Myrequest.html">
+                        <img src="images/req.png" alt="icon" class="icon-size" /><span class="footer-text">My
+                            Requests
+                        </span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer end-->
+    </div>
+  </section>
+
+  <!-- jQuery script -->
+  <script>
+    function openNav() {
+      document.getElementById("myNav").style.width = "350px";
+    }
+
+    function closeNav() {
+      document.getElementById("myNav").style.width = "0%";
+    }
+
+    $(function () {
+      $('#thumbnail li').click(function () {
+        var thisIndex = $(this).index()
+
+        if (thisIndex < $('#thumbnail li.active').index()) {
+          prevImage(thisIndex, $(this).parents("#thumbnail").prev("#image-slider"));
+        } else if (thisIndex > $('#thumbnail li.active').index()) {
+          nextImage(thisIndex, $(this).parents("#thumbnail").prev("#image-slider"));
+        }
+
+        $('#thumbnail li.active').removeClass('active');
+        $(this).addClass('active');
+
+      });
+    });
+
+    var width = $('#image-slider').width();
+
+    function nextImage(newIndex, parent) {
+      parent.find('li').eq(newIndex).addClass('next-img').css('left', width).animate({ left: 0 }, 600);
+      parent.find('li.active-img').removeClass('active-img').css('left', '0').animate({ left: -width }, 600);
+      parent.find('li.next-img').attr('class', 'active-img');
+    }
+    function prevImage(newIndex, parent) {
+      parent.find('li').eq(newIndex).addClass('next-img').css('left', -width).animate({ left: 0 }, 600);
+      parent.find('li.active-img').removeClass('active-img').css('left', '0').animate({ left: width }, 600);
+      parent.find('li.next-img').attr('class', 'active-img');
+    }
+
+    /* Thumbails */
+    var ThumbailsWidth = ($('#image-slider').width() - 18.5) / 7;
+    $('#thumbnail li').find('img').css('width', ThumbailsWidth);
+
+  </script>
+
+  <!-- functions script -->
+  <script src="jtc.js"></script>
+
+</body>
+
+</html>
