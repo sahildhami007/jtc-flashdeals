@@ -1026,7 +1026,7 @@ const MyRequests = () => {
             if (response?.success) {
                 const reqStock = response?.data.filter(item => item?.stock?.defaultImage != null)
                 if (reqStock?.length > 0) {
-                    reqStock.map(item => {
+                    reqStock.map((item, i) => {
                         const reqdiv = document.getElementById("reqdiv");
                         const div = document.createElement("div");
                         div.className = "requested-stock";
@@ -1034,18 +1034,20 @@ const MyRequests = () => {
                         var reqDate = item?.requestDate.split("T")[0];
                         div.innerHTML = `<div class="col-5 col-lg-5 reqDiv"><img src=${item?.stock?.defaultImage} alt="img"></div>
                         <div class="col-7 col-lg-7">
-                            <p class="vehDetail">${item?.stock?.productDiscription}</p>
-                            <p class="vehDetail">Request Date : ${reqDate}</p>
-                            <p class="vehDetail">Status : ${item?.status}</p>
+                        <p class="vehDetail"><span>Request #:</span> ${i}</p>
+                            <p class="vehDetail"><span>${item?.stock?.productDiscription}</p>
+                            <p class="vehDetail"><span>Request On:</span> ${reqDate}</p>
+                            <p class="vehDetail"><span>Customer Name:</span> ${item?.name}</p>
+                            <p class="vehDetail"><span>Email:</span> ${item?.email}</p>
+                            <p class="vehDetail"><span>Phone:</span> ${item?.phoneNumber}</p>
+                            <p class="vehDetail"><span>Assign To Salesman:</span> ${item?.salesmanEmail}</p>
                         </div><hr>`;
-                        div.addEventListener('click', function () {
-                            if (getRole() === "StockEntry") {
-                                return;
-                            } else {
+                        if (getRole() === "Customer") {
+                            div.addEventListener('click', function () {
                                 localStorage.setItem("stockNumber", item?.stockNumber)
                                 window.location.replace("details.html");
-                            }
-                        });
+                            });
+                        }
                         reqdiv.append(div);
                         const hr = document.createElement("hr");
                         reqdiv.append(hr);
