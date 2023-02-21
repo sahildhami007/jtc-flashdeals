@@ -180,8 +180,9 @@
 .footer-text {
     color: #ffffffd1;
     display: flex;
+    font-weight: 500;
     justify-content: center;
-    font-size: 8px;
+    font-size: 14px;
     margin-top: 10px;
 }
 
@@ -724,7 +725,7 @@ a {
 .reqDiv img {
     width: 100%;
     height: 100%;
-    margin-top: 12px;
+    margin-top: 5px;
 }
 .vehDetail{
     font-size: 12px;

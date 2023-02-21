@@ -769,9 +769,7 @@ const flashStockDeal = () => {
                 document.getElementById("bigImageDisplay").src = firstVehicle?.defaultImage;
                 document.getElementById("description").innerHTML = firstVehicle?.productDiscription;
                 document.getElementById("other-data").innerHTML = `${firstVehicle?.fuel} ${firstVehicle?.drive} ${firstVehicle?.engineCc} CC Engine`;
-
                 document.getElementById("stockDetails")
-                // newStocks.length = 3;
                 newStocks?.map(item => {
                     const imagedetails = document.getElementById("detailsImage");
                     const div = document.createElement('div');
