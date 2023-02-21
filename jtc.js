@@ -1126,7 +1126,7 @@ const initDetails = () => {
 }
 
 const initMyRequest = () => {
-    // if (GetToken) {
+    if (GetToken) {
         document.getElementById("user-email").innerHTML = GetEmail;
         MyRequests();
         parseJwt();
@@ -1136,10 +1136,10 @@ const initMyRequest = () => {
         } else {
             stockButton.style.display = "none";
         }
-    // }
-    // else {
-    //     window?.location?.replace('index.html');
-    // }
+    }
+    else {
+        window?.location?.replace('index.html');
+    }
 }
 
 // Reload page functions
