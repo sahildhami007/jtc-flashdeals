@@ -1034,7 +1034,7 @@ const MyRequests = () => {
                         var reqDate = item?.requestDate.split("T")[0];
                         div.innerHTML = `<div class="col-5 col-lg-5 reqDiv"><img src=${item?.stock?.defaultImage} alt="img"></div>
                         <div class="col-7 col-lg-7">
-                        <p class="vehDetail"><span>Request #:</span> ${i}</p>
+                        <p class="vehDetail"><span>Request #:</span> ${i+1}</p>
                             <p class="vehDetail"><span>${item?.stock?.productDiscription}</p>
                             <p class="vehDetail"><span>Request On:</span> ${reqDate}</p>
                             <p class="vehDetail"><span>Customer Name:</span> ${item?.name}</p>
@@ -1126,7 +1126,7 @@ const initDetails = () => {
 }
 
 const initMyRequest = () => {
-    if (GetToken) {
+    // if (GetToken) {
         document.getElementById("user-email").innerHTML = GetEmail;
         MyRequests();
         parseJwt();
@@ -1136,10 +1136,10 @@ const initMyRequest = () => {
         } else {
             stockButton.style.display = "none";
         }
-    }
-    else {
-        window?.location?.replace('index.html');
-    }
+    // }
+    // else {
+    //     window?.location?.replace('index.html');
+    // }
 }
 
 // Reload page functions
