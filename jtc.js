@@ -1034,7 +1034,7 @@ const MyRequests = () => {
                         var reqDate = item?.requestDate.split("T")[0];
                         div.innerHTML = `<div class="col-5 col-lg-5 reqDiv"><img src=${item?.stock?.defaultImage} alt="img"></div>
                         <div class="col-7 col-lg-7">
-                        <p class="vehDetail"><span>Request #:</span> ${i+1}</p>
+                        <p class="vehDetail"><span>Request #:</span> ${i + 1}</p>
                             <p class="vehDetail"><span>${item?.stock?.productDiscription}</p>
                             <p class="vehDetail"><span>Request On:</span> ${reqDate}</p>
                             <p class="vehDetail"><span>Customer Name:</span> ${item?.name}</p>
@@ -1222,6 +1222,7 @@ const reloadDetails = () => {
 const reloadUploadStock = () => {
     parseJwt();
     if (getRole() === "StockEntry") {
+        document.getElementById("footerHome").href = "#";
         stockButton.style.display = "block";
         document.getElementById("user-email").innerHTML = GetEmail;
         document?.getElementById("myform")?.reset();
